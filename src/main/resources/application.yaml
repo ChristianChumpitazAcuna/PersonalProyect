@@ -1,0 +1,15 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /notebooker
+spring:
+  datasource:
+    url: jdbc:postgresql://aws-0-us-east-1.pooler.supabase.com:6543/postgres
+    username: postgres.gicdygjifaulfkvginho
+    password: ValleGrande2024
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
