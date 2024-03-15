@@ -21,6 +21,9 @@ public class Student {
     @Column(name = "last_name")
     private String last_name;
 
+    @Column(name = "email")
+    private String email;
+
     @Column(name = "status")
     private String status;
 

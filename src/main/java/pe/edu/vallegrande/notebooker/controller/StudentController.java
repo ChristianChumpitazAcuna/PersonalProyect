@@ -7,6 +7,7 @@ import pe.edu.vallegrande.notebooker.model.Student;
 import pe.edu.vallegrande.notebooker.service.StudentService;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -33,7 +34,7 @@ public class StudentController {
     }
 
     @PostMapping("/insertAll")
-    public ResponseEntity<?>saveAll (@RequestBody List<Student>students){
+    public ResponseEntity<?> saveAll(@RequestBody List<Student> students) {
         List<Student> saveStudents = studentService.saveAll(students);
         return ResponseEntity.ok(saveStudents);
     }
@@ -47,4 +48,19 @@ public class StudentController {
     public ResponseEntity<Optional<Student>> restore(@PathVariable Long id) {
         return ResponseEntity.ok(studentService.restore(id));
     }
+
+    @DeleteMapping("/deleteAll")
+    public ResponseEntity<?> removeAll(@RequestBody Map<String, List<Long>> payload) {
+        List<Long> ids = payload.get("ids");
+        List<Student> removeStundents = studentService.removeAll(ids);
+        return ResponseEntity.ok(removeStundents);
+    }
+
+    @PatchMapping("/update/{id}")
+    public ResponseEntity<Student> update(@RequestBody Map<String, Object> updates,
+                                          @PathVariable Long id) {
+        Student updateStudent = studentService.updateStudent(updates, id);
+        return ResponseEntity.ok(updateStudent);
+    }
+
 }

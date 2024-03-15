@@ -19,4 +19,8 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
     @Modifying
     @Query(value = "UPDATE Student s SET s.status = 'I' WHERE s.id = :id")
     void removeStudent(Long id);
+
+    @Modifying
+    @Query(value = "UPDATE Student s SET s.status = 'I' WHERE s.id IN :ids")
+    void removeAll(List<Long> ids);
 }
